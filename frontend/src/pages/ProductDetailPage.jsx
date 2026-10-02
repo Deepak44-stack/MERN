@@ -3,10 +3,12 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
 import { Row, Col, Image, ListGroup, Button,Form } from "react-bootstrap";
 import Rating from "../components/Ratings";
+import { useDispatch } from "react-redux";
 
 function ProductDetailPage() {
   const { id } = useParams();
   const [product, setProduct] = useState({});
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchProductById = async () => {
@@ -84,7 +86,7 @@ function ProductDetailPage() {
     </ListGroup.Item>
 )}
             <ListGroup.Item>
-              <Button variant="dark" disabled={!product.countInStock}>
+              <Button variant="dark" onclick ={() => dispatch(add)}>
                 Add to Cart
               </Button>
             </ListGroup.Item>
